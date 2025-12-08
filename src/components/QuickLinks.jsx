@@ -31,10 +31,10 @@ function QuickLinks() {
 
   return (
     <div>
-      <h2 className="text-neon-green font-cyber text-lg mb-4 tracking-wide">
+      <h2 className="text-neon-green font-cyber text-base sm:text-lg mb-3 sm:mb-4 tracking-wide">
         QUICK LINKS
       </h2>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {quickLinks.map((link) => (
           <NeonButton
             key={link.name}

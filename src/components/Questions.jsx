@@ -195,20 +195,20 @@ function Questions({ userId }) {
 
       {/* Focus History */}
       {focusHistory.length > 0 && (
-        <div className="mb-12">
-          <h3 className="text-neon-green font-cyber text-lg mb-4 tracking-wide">
+        <div className="mb-6 sm:mb-8 md:mb-12">
+          <h3 className="text-neon-green font-cyber text-base sm:text-lg mb-3 sm:mb-4 tracking-wide">
             FOCUS HISTORY
           </h3>
           <div className="space-y-2">
             {focusHistory.map((entry) => (
               <div
                 key={entry.id}
-                className="bg-cyber-dark border border-neon-green/30 rounded-lg p-4 flex items-center justify-between group hover:border-neon-green/60 transition-all duration-300"
+                className="bg-cyber-dark border border-neon-green/30 rounded-lg p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between group hover:border-neon-green/60 transition-all duration-300 gap-3"
               >
                 {editingId === entry.id ? (
                   // Edit Mode
                   <>
-                    <div className="flex-1 mr-4">
+                    <div className="flex-1 w-full sm:mr-4">
                       <input
                         type="text"
                         value={editText}
@@ -216,35 +216,35 @@ function Questions({ userId }) {
                         onKeyDown={(e) => handleEditKeyDown(e, entry.id)}
                         className="w-full bg-cyber-dark border-2 border-blue-400 text-neon-green font-cyber p-2 rounded-lg 
                                  focus:outline-none focus:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all duration-300
-                                 placeholder-neon-green/30"
+                                 placeholder-neon-green/30 text-sm sm:text-base"
                         autoFocus
                       />
                       <p className="text-neon-green/40 font-cyber text-xs mt-1">
                         Press Enter to save, Escape to cancel
                       </p>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 self-end sm:self-auto">
                       <button
                         onClick={() => handleSaveEdit(entry.id)}
                         className="text-blue-400 hover:text-blue-300 transition-colors duration-200 p-2 hover:bg-cyber-light rounded"
                         title="Save changes"
                       >
-                        <Check size={18} />
+                        <Check size={16} className="sm:w-[18px] sm:h-[18px]" />
                       </button>
                       <button
                         onClick={handleCancelEdit}
                         className="text-neon-green/50 hover:text-red-500 transition-colors duration-200 p-2 hover:bg-cyber-light rounded"
                         title="Cancel editing"
                       >
-                        <X size={18} />
+                        <X size={16} className="sm:w-[18px] sm:h-[18px]" />
                       </button>
                     </div>
                   </>
                 ) : (
                   // View Mode
                   <>
-                    <div className="flex-1 mr-4">
-                      <p className="text-neon-green font-cyber text-sm">
+                    <div className="flex-1 w-full sm:mr-4">
+                      <p className="text-neon-green font-cyber text-sm break-words">
                         {entry.focus_text}
                       </p>
                       <p className="text-neon-green/40 font-cyber text-xs mt-1">
@@ -257,20 +257,20 @@ function Questions({ userId }) {
                         })}
                       </p>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 self-end sm:self-auto flex-shrink-0">
                       <button
                         onClick={() => handleEditClick(entry.id, entry.focus_text)}
                         className="text-neon-green/50 hover:text-blue-400 transition-colors duration-200 p-2 hover:bg-cyber-light rounded"
                         title="Edit this focus"
                       >
-                        <Pencil size={18} />
+                        <Pencil size={16} className="sm:w-[18px] sm:h-[18px]" />
                       </button>
                       <button
                         onClick={() => handleDeleteClick(entry.id, entry.focus_text)}
                         className="text-neon-green/50 hover:text-red-500 transition-colors duration-200 p-2 hover:bg-cyber-light rounded"
                         title="Delete this focus"
                       >
-                        <Trash2 size={18} />
+                        <Trash2 size={16} className="sm:w-[18px] sm:h-[18px]" />
                       </button>
                     </div>
                   </>

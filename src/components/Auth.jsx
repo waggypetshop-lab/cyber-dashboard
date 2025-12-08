@@ -47,7 +47,7 @@ function Auth() {
   }
 
   return (
-    <div className="min-h-screen bg-cyber-dark flex items-center justify-center p-8">
+    <div className="min-h-screen bg-cyber-dark flex items-center justify-center p-4 sm:p-6 md:p-8">
       {/* Animated Grid Background */}
       <div className="cyber-grid-bg"></div>
       
@@ -59,32 +59,32 @@ function Auth() {
 
       {/* Auth Form */}
       <div className="w-full max-w-md content-wrapper">
-        <div className="bg-cyber-gray border-2 border-neon-green rounded-lg p-8 shadow-neon">
+        <div className="bg-cyber-gray border-2 border-neon-green rounded-lg p-4 sm:p-6 md:p-8 shadow-neon">
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-cyber font-bold text-neon-green mb-2 tracking-wider">
+          <div className="text-center mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl font-cyber font-bold text-neon-green mb-2 tracking-wider">
               {isSignUp ? 'SIGN UP' : 'SIGN IN'}
             </h1>
-            <div className="h-1 w-24 bg-neon-green mx-auto shadow-neon-sm"></div>
+            <div className="h-1 w-20 sm:w-24 bg-neon-green mx-auto shadow-neon-sm"></div>
           </div>
 
           {/* Error/Success Messages */}
           {error && (
-            <div className="mb-4 bg-red-600/20 border border-red-500 text-red-400 font-cyber text-sm p-3 rounded-lg">
+            <div className="mb-4 bg-red-600/20 border border-red-500 text-red-400 font-cyber text-xs sm:text-sm p-3 rounded-lg break-words">
               {error}
             </div>
           )}
           {message && (
-            <div className="mb-4 bg-neon-green/20 border border-neon-green text-neon-green font-cyber text-sm p-3 rounded-lg">
+            <div className="mb-4 bg-neon-green/20 border border-neon-green text-neon-green font-cyber text-xs sm:text-sm p-3 rounded-lg break-words">
               {message}
             </div>
           )}
 
           {/* Form */}
-          <form onSubmit={handleAuth} className="space-y-6">
+          <form onSubmit={handleAuth} className="space-y-4 sm:space-y-6">
             {/* Email Input */}
             <div>
-              <label className="block text-neon-green font-cyber text-sm mb-2 tracking-wide">
+              <label className="block text-neon-green font-cyber text-xs sm:text-sm mb-2 tracking-wide">
                 EMAIL
               </label>
               <input
@@ -93,15 +93,15 @@ function Auth() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="w-full bg-cyber-dark border-2 border-neon-green text-neon-green font-cyber p-3 rounded-lg 
+                className="w-full bg-cyber-dark border-2 border-neon-green text-neon-green font-cyber p-2 sm:p-3 rounded-lg 
                          focus:outline-none focus:shadow-neon transition-all duration-300
-                         placeholder-neon-green/30"
+                         placeholder-neon-green/30 text-sm sm:text-base"
               />
             </div>
 
             {/* Password Input */}
             <div>
-              <label className="block text-neon-green font-cyber text-sm mb-2 tracking-wide">
+              <label className="block text-neon-green font-cyber text-xs sm:text-sm mb-2 tracking-wide">
                 PASSWORD
               </label>
               <input
@@ -111,9 +111,9 @@ function Auth() {
                 placeholder="••••••••"
                 required
                 minLength={6}
-                className="w-full bg-cyber-dark border-2 border-neon-green text-neon-green font-cyber p-3 rounded-lg 
+                className="w-full bg-cyber-dark border-2 border-neon-green text-neon-green font-cyber p-2 sm:p-3 rounded-lg 
                          focus:outline-none focus:shadow-neon transition-all duration-300
-                         placeholder-neon-green/30"
+                         placeholder-neon-green/30 text-sm sm:text-base"
               />
               {isSignUp && (
                 <p className="text-neon-green/50 font-cyber text-xs mt-1">
@@ -126,8 +126,8 @@ function Auth() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-neon-green text-cyber-dark font-cyber font-bold py-3 rounded-lg 
-                       hover:shadow-neon transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-neon-green text-cyber-dark font-cyber font-bold py-2 sm:py-3 rounded-lg 
+                       hover:shadow-neon transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
             >
               {loading ? 'LOADING...' : (isSignUp ? 'SIGN UP' : 'SIGN IN')}
             </button>
@@ -141,7 +141,7 @@ function Auth() {
                   setError('')
                   setMessage('')
                 }}
-                className="text-neon-green/70 hover:text-neon-green font-cyber text-sm transition-colors duration-200"
+                className="text-neon-green/70 hover:text-neon-green font-cyber text-xs sm:text-sm transition-colors duration-200"
               >
                 {isSignUp ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
               </button>
@@ -149,7 +149,7 @@ function Auth() {
           </form>
 
           {/* Footer */}
-          <div className="mt-8 text-center">
+          <div className="mt-6 sm:mt-8 text-center">
             <div className="h-px w-full bg-neon-green/30 mb-3"></div>
             <p className="text-neon-green/50 font-cyber text-xs tracking-wider">
               CYBERPUNK DASHBOARD • SECURE ACCESS
@@ -158,10 +158,10 @@ function Auth() {
         </div>
 
         {/* Corner Accents */}
-        <div className="fixed top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-neon-green/50 z-10"></div>
-        <div className="fixed top-4 right-4 w-12 h-12 border-r-2 border-t-2 border-neon-green/50 z-10"></div>
-        <div className="fixed bottom-4 left-4 w-12 h-12 border-l-2 border-b-2 border-neon-green/50 z-10"></div>
-        <div className="fixed bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-neon-green/50 z-10"></div>
+        <div className="fixed top-2 left-2 w-8 h-8 sm:top-4 sm:left-4 sm:w-12 sm:h-12 border-l-2 border-t-2 border-neon-green/50 z-10"></div>
+        <div className="fixed top-2 right-2 w-8 h-8 sm:top-4 sm:right-4 sm:w-12 sm:h-12 border-r-2 border-t-2 border-neon-green/50 z-10"></div>
+        <div className="fixed bottom-2 left-2 w-8 h-8 sm:bottom-4 sm:left-4 sm:w-12 sm:h-12 border-l-2 border-b-2 border-neon-green/50 z-10"></div>
+        <div className="fixed bottom-2 right-2 w-8 h-8 sm:bottom-4 sm:right-4 sm:w-12 sm:h-12 border-r-2 border-b-2 border-neon-green/50 z-10"></div>
       </div>
     </div>
   )

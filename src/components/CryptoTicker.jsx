@@ -73,41 +73,41 @@ function CryptoTicker() {
   }
 
   return (
-    <div className="bg-cyber-dark/30 backdrop-blur-md border-2 border-neon-green rounded-lg p-6 shadow-neon-sm">
+    <div className="bg-cyber-dark/30 backdrop-blur-md border-2 border-neon-green rounded-lg p-3 sm:p-4 md:p-6 shadow-neon-sm">
       {/* Header */}
-      <div className="text-center mb-4">
-        <h3 className="text-xl font-cyber font-bold text-neon-green tracking-wider">
+      <div className="text-center mb-3 sm:mb-4">
+        <h3 className="text-base sm:text-lg md:text-xl font-cyber font-bold text-neon-green tracking-wider">
           LIVE CRYPTO MARKET
         </h3>
-        <div className="h-px w-24 bg-neon-green/50 mx-auto mt-2"></div>
+        <div className="h-px w-20 sm:w-24 bg-neon-green/50 mx-auto mt-2"></div>
       </div>
 
       {/* Crypto Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {/* Bitcoin */}
         {cryptoData?.bitcoin && (
-          <div className="bg-cyber-gray/50 border border-neon-green/50 rounded-lg p-4 hover:border-neon-green transition-all duration-300">
+          <div className="bg-cyber-gray/50 border border-neon-green/50 rounded-lg p-3 sm:p-4 hover:border-neon-green transition-all duration-300">
             <div className="flex items-center justify-between mb-2">
-              <span className="font-cyber text-neon-green font-bold text-lg">BTC</span>
+              <span className="font-cyber text-neon-green font-bold text-base sm:text-lg">BTC</span>
               <span className="font-cyber text-neon-green/70 text-xs">Bitcoin</span>
             </div>
             
-            <div className="text-2xl font-cyber font-bold text-neon-green mb-2 tabular-nums">
+            <div className="text-xl sm:text-2xl font-cyber font-bold text-neon-green mb-2 tabular-nums break-all">
               {formatPrice(cryptoData.bitcoin.usd)}
             </div>
 
             <div className="flex items-center gap-2">
               {cryptoData.bitcoin.usd_24h_change >= 0 ? (
                 <>
-                  <TrendingUp className="w-4 h-4 text-green-400" />
-                  <span className="font-cyber text-green-400 text-sm font-bold">
+                  <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0" />
+                  <span className="font-cyber text-green-400 text-xs sm:text-sm font-bold">
                     +{formatChange(cryptoData.bitcoin.usd_24h_change)}%
                   </span>
                 </>
               ) : (
                 <>
-                  <TrendingDown className="w-4 h-4 text-red-400" />
-                  <span className="font-cyber text-red-400 text-sm font-bold">
+                  <TrendingDown className="w-3 h-3 sm:w-4 sm:h-4 text-red-400 flex-shrink-0" />
+                  <span className="font-cyber text-red-400 text-xs sm:text-sm font-bold">
                     {formatChange(cryptoData.bitcoin.usd_24h_change)}%
                   </span>
                 </>
@@ -119,28 +119,28 @@ function CryptoTicker() {
 
         {/* Ethereum */}
         {cryptoData?.ethereum && (
-          <div className="bg-cyber-gray/50 border border-neon-green/50 rounded-lg p-4 hover:border-neon-green transition-all duration-300">
+          <div className="bg-cyber-gray/50 border border-neon-green/50 rounded-lg p-3 sm:p-4 hover:border-neon-green transition-all duration-300">
             <div className="flex items-center justify-between mb-2">
-              <span className="font-cyber text-neon-green font-bold text-lg">ETH</span>
+              <span className="font-cyber text-neon-green font-bold text-base sm:text-lg">ETH</span>
               <span className="font-cyber text-neon-green/70 text-xs">Ethereum</span>
             </div>
             
-            <div className="text-2xl font-cyber font-bold text-neon-green mb-2 tabular-nums">
+            <div className="text-xl sm:text-2xl font-cyber font-bold text-neon-green mb-2 tabular-nums break-all">
               {formatPrice(cryptoData.ethereum.usd)}
             </div>
 
             <div className="flex items-center gap-2">
               {cryptoData.ethereum.usd_24h_change >= 0 ? (
                 <>
-                  <TrendingUp className="w-4 h-4 text-green-400" />
-                  <span className="font-cyber text-green-400 text-sm font-bold">
+                  <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0" />
+                  <span className="font-cyber text-green-400 text-xs sm:text-sm font-bold">
                     +{formatChange(cryptoData.ethereum.usd_24h_change)}%
                   </span>
                 </>
               ) : (
                 <>
-                  <TrendingDown className="w-4 h-4 text-red-400" />
-                  <span className="font-cyber text-red-400 text-sm font-bold">
+                  <TrendingDown className="w-3 h-3 sm:w-4 sm:h-4 text-red-400 flex-shrink-0" />
+                  <span className="font-cyber text-red-400 text-xs sm:text-sm font-bold">
                     {formatChange(cryptoData.ethereum.usd_24h_change)}%
                   </span>
                 </>
@@ -152,7 +152,7 @@ function CryptoTicker() {
       </div>
 
       {/* Last Updated */}
-      <div className="text-center mt-4">
+      <div className="text-center mt-3 sm:mt-4">
         <span className="text-neon-green/40 font-cyber text-xs">
           AUTO-REFRESH: 30s
         </span>
