@@ -203,12 +203,12 @@ function Questions({ userId }) {
             {focusHistory.map((entry) => (
               <div
                 key={entry.id}
-                className="bg-cyber-dark border border-neon-green/30 rounded-lg p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between group hover:border-neon-green/60 transition-all duration-300 gap-3"
+                className="bg-cyber-dark border border-neon-green/30 rounded-lg p-3 sm:p-4 group hover:border-neon-green/60 transition-all duration-300"
               >
                 {editingId === entry.id ? (
                   // Edit Mode
-                  <>
-                    <div className="flex-1 w-full sm:mr-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex-1 min-w-0">
                       <input
                         type="text"
                         value={editText}
@@ -223,7 +223,7 @@ function Questions({ userId }) {
                         Press Enter to save, Escape to cancel
                       </p>
                     </div>
-                    <div className="flex gap-2 self-end sm:self-auto">
+                    <div className="flex gap-2 flex-shrink-0 flex-nowrap">
                       <button
                         onClick={() => handleSaveEdit(entry.id)}
                         className="text-blue-400 hover:text-blue-300 transition-colors duration-200 p-2 hover:bg-cyber-light rounded"
@@ -239,15 +239,15 @@ function Questions({ userId }) {
                         <X size={16} className="sm:w-[18px] sm:h-[18px]" />
                       </button>
                     </div>
-                  </>
+                  </div>
                 ) : (
                   // View Mode
-                  <>
-                    <div className="flex-1 w-full sm:mr-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex-1 min-w-0">
                       <p className="text-neon-green font-cyber text-sm break-words">
                         {entry.focus_text}
                       </p>
-                      <p className="text-neon-green/40 font-cyber text-xs mt-1">
+                      <p className="text-neon-green/40 font-cyber text-xs mt-1 truncate">
                         {new Date(entry.created_at).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
@@ -257,7 +257,7 @@ function Questions({ userId }) {
                         })}
                       </p>
                     </div>
-                    <div className="flex gap-2 self-end sm:self-auto flex-shrink-0">
+                    <div className="flex gap-2 flex-shrink-0 flex-nowrap">
                       <button
                         onClick={() => handleEditClick(entry.id, entry.focus_text)}
                         className="text-neon-green/50 hover:text-blue-400 transition-colors duration-200 p-2 hover:bg-cyber-light rounded"
@@ -273,7 +273,7 @@ function Questions({ userId }) {
                         <Trash2 size={16} className="sm:w-[18px] sm:h-[18px]" />
                       </button>
                     </div>
-                  </>
+                  </div>
                 )}
               </div>
             ))}
