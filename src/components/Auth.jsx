@@ -26,7 +26,14 @@ function Auth() {
         })
 
         if (error) throw error
-        setMessage('Check your email for the confirmation link!')
+        
+        // Show welcome message and navigate to dashboard
+        setMessage('Welcome! Logging you in...')
+        
+        // Brief delay to show the message, then navigate
+        setTimeout(() => {
+          navigate('/dashboard')
+        }, 1000)
       } else {
         // Sign In
         const { error } = await supabase.auth.signInWithPassword({
