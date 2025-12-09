@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { supabase } from './supabaseClient'
+import { useProfile } from './hooks/useProfile'
 import Auth from './components/Auth'
 import ProtectedRoute from './components/ProtectedRoute'
 import LogoutButton from './components/LogoutButton'
+import UpgradeButton from './components/UpgradeButton'
+import ProBadge from './components/ProBadge'
 import QuickLinks from './components/QuickLinks'
 import Questions from './components/Questions'
 import CryptoTicker from './components/CryptoTicker'
@@ -12,6 +15,7 @@ import CryptoTicker from './components/CryptoTicker'
 function Dashboard() {
   const [time, setTime] = useState(new Date())
   const [user, setUser] = useState(null)
+  const { isPremium, loading: profileLoading } = useProfile()
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -71,14 +75,13 @@ function Dashboard() {
         {/* Main Container */}
         <div className="bg-cyber-gray border-2 border-neon-green rounded-lg p-4 sm:p-6 md:p-8 lg:p-12 shadow-neon md:relative">
           
-          {/* Header - Mobile: Flex Column, Desktop: Relative with Absolute Button */}
-          <div className="flex flex-col mb-6 sm:mb-8 md:mb-12 md:block">
-            
-            {/* Logout Button Container - Mobile: Right-aligned in flow, Desktop: Absolute positioned */}
-            <div className="flex justify-end mb-3 md:mb-0">
-              <LogoutButton className="md:absolute md:top-6 md:right-6" />
-            </div>
-            
+          {/* Logout Button - Top Right Corner */}
+          <div className="absolute top-3 right-3 sm:top-6 sm:right-6 z-10">
+            <LogoutButton />
+          </div>
+          
+          {/* Header */}
+          <div className="mb-6 sm:mb-8 md:mb-12">
             {/* Title Section */}
             <div className="text-center">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-cyber font-bold text-neon-green mb-2 tracking-wider">
@@ -88,6 +91,13 @@ function Dashboard() {
               <p className="text-neon-green/50 font-cyber text-xs sm:text-sm mt-2 break-all px-2">
                 {user?.email}
               </p>
+              
+              {/* Central Call to Action - Upgrade Button or PRO Badge */}
+              {!profileLoading && (
+                <div className="mt-4 flex justify-center">
+                  {isPremium ? <ProBadge /> : <UpgradeButton />}
+                </div>
+              )}
             </div>
           </div>
 
